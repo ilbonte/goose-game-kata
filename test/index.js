@@ -22,12 +22,26 @@ test('add a duplicate player', function () {
 test('move a player from "Partenza" ', function () {
    let game = new Game()
    game.addPlayer('Luca')
-   assert.equal(game.movePlayer('Luca',4,2),'Luca tira 4, 2. Luca muove da Partenza a 6')
+   assert.equal(game.movePlayer('Luca',4,2),'Luca tira 4, 2. Luca muove da Partenza a 6.')
 })
 
 test('move a player from another position ', function () {
    let game = new Game()
    game.addPlayer('Luca')
    game.movePlayer('Luca',4,2)
-   assert.equal(game.movePlayer('Luca',2,3),'Luca tira 2, 3. Luca muove da 6 a 11')
+   assert.equal(game.movePlayer('Luca',2,3),'Luca tira 2, 3. Luca muove da 6 a 11.')
+})
+
+test('win directly with a single move', function () {
+   let game = new Game()
+   game.addPlayer('Luca')
+   game.movePlayer('Luca',50,10)
+   assert.equal(game.movePlayer('Luca',1,2),'Luca tira 1, 2. Luca muove da 60 a 63. Luca vince!!')
+})
+
+test('bounce at the end of the trail', function () {
+   let game = new Game()
+   game.addPlayer('Luca')
+   game.movePlayer('Luca',50,10)
+   assert.equal(game.movePlayer('Luca',3,2),'Luca tira 3, 2. Luca muove da 60 a 61. Luca rimbalza!! Luca torna a 61')
 })

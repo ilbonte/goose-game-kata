@@ -9,6 +9,6 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "m.test": "0.0.1"
+    "m.test": "0.0.2"
   }
 }
