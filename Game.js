@@ -32,6 +32,10 @@ module.exports = class Game {
       return `${name} tira ${firstDice}, ${secondDice}. ${name} muove da ${startingPosition} a 63. ${name} rimbalza!! ${name} torna a ${player.position}`
     }
 
+    if(player.landsOnBridge()){
+      return `${name} tira ${firstDice}, ${secondDice}. ${name} muove da ${startingPosition} a ${player.getPosition()}. ${name} salta al 12`
+    }    
+
     return `${name} tira ${firstDice}, ${secondDice}. ${name} muove da ${startingPosition} a ${player.getPosition()}.`
   }
 

@@ -5,6 +5,17 @@ module.exports = class Player{
   }
 
   getPosition(){
+    switch(this.position){
+      case 0:
+        return "Partenza"
+      break
+      case 6:
+        return "Il Ponte"
+      break
+      default:
+        return this.position
+      
+    }
     return this.position === 0 ? "Partenza" : this.position
   }
 
@@ -16,8 +27,8 @@ module.exports = class Player{
     return this.position > 63 ? true : false
   }
 
-  lastMoveText(){
-
+  landsOnBridge(){
+    return this.position === 6
   }
   
 

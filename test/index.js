@@ -47,8 +47,13 @@ test('bounce at the end of the trail', function () {
 })
 
 test('game throw dice', function () {
-let game = new Game(()=>([4,2]))
+let game = new Game(()=>([4,1]))
    game.addPlayer('Luca')   
-   assert.equal(game.movePlayer('Luca'),'Luca tira 4, 2. Luca muove da Partenza a 6.')
+   assert.equal(game.movePlayer('Luca'),'Luca tira 4, 1. Luca muove da Partenza a 5.')
 })
 
+test('when player lands on Il Ponte he skips to 12', function () {
+let game = new Game(()=>([6,0]))
+   game.addPlayer('Luca')   
+   assert.equal(game.movePlayer('Luca'),'Luca tira 6, 0. Luca muove da Partenza a Il Ponte. Luca salta al 12')
+})
