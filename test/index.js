@@ -57,3 +57,9 @@ let game = new Game(()=>([6,0]))
    game.addPlayer('Luca')   
    assert.equal(game.movePlayer('Luca'),'Luca tira 6, 0. Luca muove da Partenza a Il Ponte. Luca salta al 12')
 })
+
+test('when player lands on l Oca it doubles last move', function () {
+let game = new Game(()=>([6,0]))
+   game.addPlayer('Luca')   
+   assert.equal(game.movePlayer('Luca'),'Luca tira 6, 0. Luca muove da Partenza a Il Ponte. Luca salta al 12')
+})

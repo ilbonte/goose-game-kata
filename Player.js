@@ -12,6 +12,7 @@ module.exports = class Player{
       case 6:
         return "Il Ponte"
       break
+
       default:
         return this.position
       
@@ -30,6 +31,10 @@ module.exports = class Player{
   landsOnBridge(){
     return this.position === 6
   }
+
+ /* landsOnOnca(){
+    return this.position === 5 || this.position === 14   
+  }*/
   
 
 }
