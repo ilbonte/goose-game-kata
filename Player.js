@@ -8,7 +8,6 @@ module.exports = class Player{
     return this.position === 0 ? "Partenza" : this.position
   }
 
-
   hasWon(){
     return this.position === 63 ? true : false
   }
@@ -17,6 +16,9 @@ module.exports = class Player{
     return this.position > 63 ? true : false
   }
 
+  lastMoveText(){
+
+  }
   
 
 }

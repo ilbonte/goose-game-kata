@@ -17,40 +17,21 @@ module.exports = class Game {
   movePlayer(name, firstDice, secondDice) {
     const player =  this.players[name]
     const startingPosition = player.getPosition()
-    let lastMovesText = ""
-
+    
     player.position +=(firstDice+secondDice) 
 
     if(player.hasWon()){
-      lastMovesText = ` ${name} vince!!`
+      return `${name} tira ${firstDice}, ${secondDice}. ${name} muove da ${startingPosition} a ${player.getPosition()}. ${name} vince!!`
     }
 
     if(player.hasBounced()){
-
       const overflow = player.position - 63
       player.position = 63 - overflow
-      
-      lastMovesText = ` ${name} rimbalza!! ${name} torna a ${player.position}`
+
+      return `${name} tira ${firstDice}, ${secondDice}. ${name} muove da ${startingPosition} a 63. ${name} rimbalza!! ${name} torna a ${player.position}`
     }
 
-    /*oppure spostare tutto nella classe player? 
-    tipo fare 
-    lastMovesText = player.bouncePosition()
-    dove
-    bouncePosition(){
-      if(player.hasBounced()){
-
-      const overflow = player.position - 63
-      player.position = 63 - overflow
-      
-      lastMovesText = ` ${name} rimbalza!! ${name} torna a ${player.position}`
-    }
-    return lastMovesText
-    }
-        
-    */
-
-    return `${name} tira ${firstDice}, ${secondDice}. ${name} muove da ${startingPosition} a ${player.getPosition()}.${lastMovesText}`
+    return `${name} tira ${firstDice}, ${secondDice}. ${name} muove da ${startingPosition} a ${player.getPosition()}.`
   }
 
   _getRandomDice() {
