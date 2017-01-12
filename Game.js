@@ -1,8 +1,9 @@
 const Player = require('./Player.js')
 
 module.exports = class Game {
-  constructor() {
+  constructor(diceRoller = this.getDiceValues) {
     this.players = {}
+    this.diceRoller = diceRoller;    
   }
   
 
@@ -14,7 +15,7 @@ module.exports = class Game {
     return `Giocatori: ${Object.keys(this.players).join(', ')}`
   }
 
-  movePlayer(name, firstDice, secondDice) {
+  movePlayer(name, firstDice=this.diceRoller()[0], secondDice=this.diceRoller()[1]) {
     const player =  this.players[name]
     const startingPosition = player.getPosition()
     
@@ -32,6 +33,10 @@ module.exports = class Game {
     }
 
     return `${name} tira ${firstDice}, ${secondDice}. ${name} muove da ${startingPosition} a ${player.getPosition()}.`
+  }
+
+  getDiceValues(){
+    return [this._getRandomDice(), this._getRandomDice()]
   }
 
   _getRandomDice() {

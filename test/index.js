@@ -45,3 +45,10 @@ test('bounce at the end of the trail', function () {
    game.movePlayer('Luca',50,10)
    assert.equal(game.movePlayer('Luca',3,2),'Luca tira 3, 2. Luca muove da 60 a 63. Luca rimbalza!! Luca torna a 61')
 })
+
+test('game throw dice', function () {
+let game = new Game(()=>([4,2]))
+   game.addPlayer('Luca')   
+   assert.equal(game.movePlayer('Luca'),'Luca tira 4, 2. Luca muove da Partenza a 6.')
+})
+
