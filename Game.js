@@ -49,7 +49,7 @@ module.exports = class Game {
 
     let playerOnTheSamePosition = this.playerLandsOnOccupiedTile(player);
     if(playerOnTheSamePosition){
-      playerOnTheSamePosition.position = player.getPosition()-(firstDice+secondDice)
+      playerOnTheSamePosition.position = startingPosition
       return `${name} tira ${firstDice}, ${secondDice}. ${name} muove da ${startingPosition} a ${player.getPosition()}. Su ${player.getPosition()} c'era ${playerOnTheSamePosition.name}, che torna a ${playerOnTheSamePosition.getPosition()}`
     }    
 
