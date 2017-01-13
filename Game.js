@@ -37,9 +37,14 @@ module.exports = class Game {
     }
 
     if(player.landsOnGoose()){      
-      let state =  `${name} tira ${firstDice}, ${secondDice}. ${name} muove da ${startingPosition} a ${player.getPosition()}, oca. `
-      player.position += (firstDice+secondDice)
-      state+=`${name} muove di nuovo e va a ${player.getPosition()}`
+      let state =  `${name} tira ${firstDice}, ${secondDice}. ${name} muove da ${startingPosition} a ${player.getPosition()}`
+      
+      do{
+        state+=`, oca. `
+        player.position += (firstDice+secondDice)
+        state+=`${name} muove di nuovo e va a ${player.getPosition()}`
+      }while(player.landsOnGoose())
+      
       
       return state
     }    

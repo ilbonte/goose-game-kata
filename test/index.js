@@ -63,3 +63,10 @@ let game = new Game()
    game.addPlayer('Luca')   
    assert.equal(game.movePlayer('Luca',2,3),'Luca tira 2, 3. Luca muove da Partenza a 5, oca. Luca muove di nuovo e va a 10')
 })
+
+test('the player can land on the goose multiple times', function () {
+let game = new Game()
+   game.addPlayer('Luca')  
+   game.movePlayer('Luca',5,5) 
+   assert.equal(game.movePlayer('Luca',2,2),'Luca tira 2, 2. Luca muove da 10 a 14, oca. Luca muove di nuovo e va a 18, oca. Luca muove di nuovo e va a 22')
+})
