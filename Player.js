@@ -32,9 +32,10 @@ module.exports = class Player{
     return this.position === 6
   }
 
- /* landsOnOnca(){
-    return this.position === 5 || this.position === 14   
-  }*/
+  landsOnGoose(){
+    const locaPosition=[5,14,23,9,18,27]
+    return locaPosition.includes(this.position)   
+  }
   
 
 }

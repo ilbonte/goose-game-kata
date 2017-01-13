@@ -1,5 +1,5 @@
 const Player = require('./Player.js')
-
+// const locaPosition=[5,14,23,9,18,27]
 module.exports = class Game {
   constructor(diceRoller = this.getDiceValues) {
     this.players = {}
@@ -34,7 +34,17 @@ module.exports = class Game {
 
     if(player.landsOnBridge()){
       return `${name} tira ${firstDice}, ${secondDice}. ${name} muove da ${startingPosition} a ${player.getPosition()}. ${name} salta al 12`
+    }
+
+    if(player.landsOnGoose()){      
+      let state =  `${name} tira ${firstDice}, ${secondDice}. ${name} muove da ${startingPosition} a ${player.getPosition()}, oca. `
+      player.position += (firstDice+secondDice)
+      state+=`${name} muove di nuovo e va a ${player.getPosition()}`
+      
+      return state
     }    
+
+    
 
     return `${name} tira ${firstDice}, ${secondDice}. ${name} muove da ${startingPosition} a ${player.getPosition()}.`
   }
