@@ -70,3 +70,14 @@ let game = new Game()
    game.movePlayer('Luca',5,5) 
    assert.equal(game.movePlayer('Luca',2,2),'Luca tira 2, 2. Luca muove da 10 a 14, oca. Luca muove di nuovo e va a 18, oca. Luca muove di nuovo e va a 22')
 })
+
+
+test('if a player lands on tile with another player, the other player go back to the first player\'s starting position', function () {
+let game = new Game()
+   game.addPlayer('Pippo')
+   game.addPlayer('Pluto')  
+   game.movePlayer('Pippo',15,0)
+   game.movePlayer('Pluto',17,0)
+ 
+   assert.equal(game.movePlayer('Pippo',1,1),`Pippo tira 1, 1. Pippo muove da 15 a 17. Su 17 c'era Pluto, che torna a 15`)
+})

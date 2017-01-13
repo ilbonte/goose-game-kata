@@ -1,5 +1,4 @@
 const Player = require('./Player.js')
-// const locaPosition=[5,14,23,9,18,27]
 module.exports = class Game {
   constructor(diceRoller = this.getDiceValues) {
     this.players = {}
@@ -44,14 +43,34 @@ module.exports = class Game {
         player.position += (firstDice+secondDice)
         state+=`${name} muove di nuovo e va a ${player.getPosition()}`
       }while(player.landsOnGoose())
-      
-      
+            
       return state
+    }
+
+    let playerOnTheSamePosition = this.playerLandsOnOccupiedTile(player);
+    if(playerOnTheSamePosition){
+      playerOnTheSamePosition.position = player.getPosition()-(firstDice+secondDice)
+      return `${name} tira ${firstDice}, ${secondDice}. ${name} muove da ${startingPosition} a ${player.getPosition()}. Su ${player.getPosition()} c'era ${playerOnTheSamePosition.name}, che torna a ${playerOnTheSamePosition.getPosition()}`
     }    
 
-    
-
+  
     return `${name} tira ${firstDice}, ${secondDice}. ${name} muove da ${startingPosition} a ${player.getPosition()}.`
+  }
+
+  playerLandsOnOccupiedTile(movingPlayer){
+    let samePosition;
+    let foundPlayer;
+    Object.keys(this.players).forEach((playerName)=>{
+      const player = this.players[playerName]
+      if(movingPlayer.name!==playerName){
+        if(player.getPosition()===movingPlayer.getPosition()){
+          samePosition = true;
+          foundPlayer = player;
+        }
+      }   
+    })
+
+    return foundPlayer;
   }
 
   getDiceValues(){
